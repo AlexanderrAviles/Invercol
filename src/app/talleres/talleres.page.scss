@@ -1,0 +1,91 @@
+* {
+    font-family: "Montserrat", sans-serif;
+  }
+  .custom-toolbar {
+    --background: #f0f0f0; /* Color en modo claro */
+    --color: black; /* Color de texto en modo claro */
+  
+    &.dark-mode {
+      --background: black; /* Color en modo oscuro */
+      --color: white; /* Color de texto en modo oscuro */
+    }
+  }
+  ion-toolbar {
+    padding-left: 4vmin;
+  }
+  .imgHeader {
+    width: 12vmin;
+    margin-top: 2vmin;
+  }
+  .titleHeader {
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+  .autor {
+    background-color: #74238d6c;
+    color: #ff00dd;
+    width: 13vmin;
+    padding-top: 0.5vmin;
+    font-size: 2.5vmin;
+    padding-bottom: 0.5vmin;
+    border-radius: 10px;
+  }
+  ion-card-header {
+    padding-bottom: 0 !important;
+  }
+  .titleCard {
+    font-weight: bolder;
+    font-size: 4vmin;
+  }
+  .headerCard {
+    padding: 0 !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+  }
+  // .imgCol {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   flex-direction: column;
+  // }
+  
+  .imgCard {
+    height: 53vmin;
+    //   width: 40vmin;
+  }
+  .card {
+    border-radius: 3vmin;
+  }
+  
+  .contentCard {
+    font-size: 2.7vmin;
+    padding: 0;
+  }
+  .fecha {
+    font-size: 2.5vmin;
+    padding: 0 !important;
+  }
+  .marquee {
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.5);
+    padding: 3px;
+    font-size: 13px;
+  }
+  
+  .marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 110s linear infinite;
+
+    color: white !important;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }

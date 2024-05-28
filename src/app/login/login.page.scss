@@ -1,0 +1,82 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+.bg {
+  --background: white;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  border-radius: 16px;
+}
+.centered-container {
+  position: absolute;
+  top: 10%;
+  bottom: 0;
+  // height: 70vh;
+  height: 150vmin;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.logo {
+  width: 400px;
+}
+.boldText {
+  font-weight: 900;
+  color: black;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.25) !important;
+}
+.input-focused {
+  border-color: rgb(98, 24, 37) !important;
+}
+
+.input {
+  --background:#E6E6E6 !important;
+  color: rgb(70, 69, 69);
+  border-radius: 60px !important;
+}
+ion-label{
+  font-weight: bold !important;
+  color: #2626268F 56%;
+  opacity: 56%;
+}
+.iconEye {
+  margin-top: 2vh;
+  color: rgb(70, 69, 69);
+}
+.full-width {
+  background:#cb2032;
+  border-radius: 60px;
+  width: 99%;
+  padding: 17px 0;
+  font-size: 17px;
+  font-weight: bold;
+  color: white !important;
+}
+.full-width:active {
+  background: linear-gradient(177.82deg, #3f0013 -67.54%, #550010 98.17%);
+}
+.icon {
+  color: rgb(70, 69, 69);
+  margin-top: 2vh;
+}
+.textLight {
+  font-weight: 500;
+  font-size: normal;
+  color: rgba(45, 45, 45, 0.60);
+  
+  opacity: 70%;
+}
+a {
+  text-decoration: none;
+  color: white;
+}

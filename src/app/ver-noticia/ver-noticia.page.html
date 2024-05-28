@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-padding-horizontal"
+    [ngClass]="{'light-mode': !themeService.isDarkMode(), 'dark-mode': themeService.isDarkMode()}">
+    <ion-buttons slot="start">
+      <ion-button class="ion-text-center" (click)="regresar()"
+        [ngClass]="{'light-mode-button': !themeService.isDarkMode(), 'dark-mode-button': themeService.isDarkMode()}">
+        <ion-icon name="chevron-back-outline" class="backButton"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title text-center class="ion-text-center ion-margin-end">Detalles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"
+  [ngClass]="{'light-mode': !themeService.isDarkMode(), 'dark-mode': themeService.isDarkMode()}">
+
+  <div class="container ion-margin-horizontal ion-margin-top" *ngIf="noticia">
+
+    <img [src]="noticia.fields.galeria[0]" alt="Imagen de la noticia" class="img" />
+    <p class="autor ion-text-center" [ngStyle]="getBackgroundStyle(noticia.fields.autor)">{{ noticia.fields.autor }}</p>
+    <h4 class="titulo">{{ noticia.fields.titular }}</h4>
+    <div class="divInfo">
+      <div class="textAutor">
+        <ion-icon name="person"></ion-icon>
+        <p>{{ noticia.fields.autor }}</p>
+      </div>
+      <!-- <div class="textVistas">
+        <ion-icon name="eye"></ion-icon>
+        <p>1640</p>
+      </div> -->
+      <div class="textFecha">
+        <ion-icon name="time"></ion-icon>
+        <p>{{ noticia.fields.fecha_publicacion | date:'EEEE d MMMM, yyyy' }}</p>
+      </div>
+    </div>
+    <div class="contenido" *ngIf="noticia.fields?.contenido">
+      <div [innerHTML]="noticia.fields.contenido"></div>
+
+    </div>
+
+    <swiper-container #swiper [options]="swiperOptions" [zoom]="true" [loop]="true"
+      *ngIf="noticia.fields && noticia.fields.galeria && noticia.fields.galeria.length > 1" class="ion-margin-vertical">
+      <swiper-slide *ngFor="let imagenUrl of noticia.fields.galeria.slice(1)">
+        <img [src]="imagenUrl" class="img" alt="Imagen" />
+      </swiper-slide>
+    </swiper-container>
+    
+    <div class="ion-margin-vertical">
+      <ion-item class="input ion-margin-bottom">
+        <ion-input type="text" class="inputText" placeholder="Nombre de Usuario" required></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input type="text" class="inputText" placeholder="Escribir un comentario...." required></ion-input>
+        <div class="bgSend ion-text-center" slot="end" (click)="enviarComentario()">
+          <ion-icon name="send" class="send" slot="end" [ngStyle]="getSendIconStyles()"></ion-icon>
+        </div>
+      </ion-item>
+    </div>
+
+    <ion-grid class="ion-margin-vertical" *ngIf="noticia.fields?.comentarios && noticia.fields.comentarios.length > 0">
+      <ion-row *ngFor="let comentario of noticia.fields.comentarios" class="ion-margin-vertical">
+        <ion-col size="1.5" *ngIf="comentario.usuario && comentario.comentario">
+          <div class="bgimgUser ion-margin-top">
+            <img src="../../assets/image/gallery.png" class="imgUser" alt="user">
+          </div>
+        </ion-col>
+        <ion-col size="9.5" [ngStyle]="getComentarioStyles()" class="cajaComentario"
+          *ngIf="comentario.usuario && comentario.comentario">
+          <div>
+            <h5 class="user">{{ comentario.usuario }}</h5>
+            <h6 class="userCom">{{ comentario.comentario }}</h6>
+            <span class="userFecha">{{ comentario.fecha }}</span>
+          </div>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>

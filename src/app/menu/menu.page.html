@@ -1,0 +1,62 @@
+<ion-content class="bg" [fullscreen]="true">
+
+  <div class="marquee">
+    <div class="marquee-content">
+      <ng-container *ngFor="let indicator of indicators">
+        | {{ indicator.nombre }}: {{ indicator.valor }} {{ indicator.unidad }}|
+      </ng-container>
+      <!-- Duplicar los elementos para el efecto infinito -->
+      <ng-container *ngFor="let indicator of indicators">
+        | {{ indicator.nombre }}: {{ indicator.valor }} {{ indicator.unidad }}|
+      </ng-container>
+      <ng-container *ngFor="let indicator of indicators">
+        | {{ indicator.nombre }}: {{ indicator.valor }} {{ indicator.unidad }}|
+      </ng-container>
+    </div>
+  </div>
+
+
+
+  <div class="container ion-margin-horizontal">
+    <img src="../../assets/image/Logo_IC_Dark.png" class="logo" alt="logo" />
+    <h6 class="adm ion-text-center">ADMINISTRACIÓN DE COLEGIOS</h6>
+    <h5 class="ase ion-text-center">ASESORIAS</h5>
+    <ion-button [routerLink]="['/talleres']" class="ion-text-center bgBtn">
+      <ion-icon class="ion-margin-start" name="people-outline" slot="start"></ion-icon>
+      <ion-title class="ion-margin-end">Talleres</ion-title>
+    </ion-button>
+    <ion-button [routerLink]="['/noticias']" class="ion-text-center bgBtn ion-margin-vertical">
+      <ion-icon class="ion-margin-start" name="newspaper-outline" slot="start"></ion-icon>
+      <ion-title class="ion-margin-end">Noticias</ion-title>
+    </ion-button>
+  </div>
+  <div class="ion-text-center iconText" style="margin-top: 0px !important">
+    <ion-icon name="globe-outline" class="icon"></ion-icon>
+    <p class="ion-text-center">
+      <a href="https://www.invercol.cl" class="textBlack">www.invercol.cl</a>
+    </p>
+  </div>
+  <div class="iconText">
+    <ion-icon class="icon" name="call-outline">
+    </ion-icon>
+    <p class="ion-text-center">
+      <a href="tel:+56966304960" class="textBlack">+56 9 6630 4960</a>
+    </p>
+  </div>
+  <div class="iconText">
+    <ion-icon name="mail-outline" class="icon"></ion-icon>
+    <p class="ion-text-center">
+      <a href="mailto:mgarrao@invercol.cl" class="textBlack">mgarrao@invercol.cl</a>
+    </p>
+  </div>
+  <div class="iconText">
+    <ion-icon name="location-outline" class="icon ion-margin-bottom"></ion-icon>
+    <p class="ion-text-center">
+      <a href="https://www.google.com/maps/search/?api=1&query=Reyes+Lavalle+3385+oficina+A" class="textBlack" target="_blank">
+        Reyes Lavalle 3385 oficina A,<br> Las Condes
+      </a>
+    </p>
+
+  </div>
+
+</ion-content>

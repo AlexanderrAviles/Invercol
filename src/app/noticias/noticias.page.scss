@@ -1,0 +1,196 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+.custom-toolbar {
+  --background: #f0f0f0; /* Color en modo claro */
+  --color: black; /* Color de texto en modo claro */
+
+  &.dark-mode {
+    --background: black; /* Color en modo oscuro */
+    --color: white; /* Color de texto en modo oscuro */
+  }
+}
+ion-toolbar {
+  padding-left: 4vmin;
+}
+.imgHeader {
+  width: 12vmin;
+  margin-top: 2vmin;
+}
+.titleHeader {
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+.autor {
+  background-color: #302444;
+  color: #ffff;
+  font-size: 3vmin;
+  padding: 0.5vmin 0.8vmin;
+  margin-left: 2vmin;
+  border-radius: 10px;
+}
+
+.titleCard {
+  font-weight: bolder;
+  font-size: 3.7vmin;
+}
+.headerCard {
+  padding: 0 !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+.imgCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.imgCard {
+  height: 40vmin;
+  width: 40vmin;
+  --border-radius: 3vmin;
+  overflow: hidden;
+}
+
+.imgWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgWrapper ion-img {
+  height: 100%;
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  transform: scale(1); /* Ajusta el valor según tu preferencia */
+}
+
+.contentCard {
+  font-size: 2.7vmin;
+  padding: 0;
+  
+}
+.fecha {
+  font-size: 3vmin;
+  text-align: start;
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3px;
+  font-size: 13px;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  color: white;
+  animation: marquee 110s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+#ion-segment-reduced ion-segment-button {
+  --padding-start: 0px !important;
+  --padding-end: 0px !important;
+  --border-radius: 0px !important;
+  --indicator-box-shadow: none !important;
+  --border-color: transparent !important;
+}
+
+ion-segment {
+  display: flex;
+  text-align: start !important;
+  align-items: flex-start;
+  justify-content: flex-start !important;
+  --padding-bottom: 0px !important;
+}
+ion-segment-button {
+  height: 4vh !important;
+  font-size: 2.4vmin;
+}
+.custom-segment-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+}
+.custom-segment-button .button-native {
+  --padding: 0px !important;
+}
+.custom-segment-button .button-inner {
+  height: 2vh !important;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.custom-segment-button {
+  text-align: left !important;
+}
+.custom-segment-button span {
+  text-align: left !important;
+}
+ion-segment-button::part(indicator-background) {
+  background: red;
+  padding-top: 2px;
+  width: 5vh;
+  margin-left: 11px;
+  // display: none;
+}
+
+.modo-oscuro ion-segment-button.md::part(native) {
+  color: rgb(0, 0, 0);
+}
+
+.modo-oscuro .segment-button-checked.md::part(native) {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.modo-claro ion-segment-button.md::part(native) {
+  color: rgb(255, 255, 255);
+}
+
+.modo-claro .segment-button-checked.md::part(native) {
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+ion-segment {
+  overflow-x: scroll;
+  scrollbar-width: none; /* Oculta la barra de desplazamiento en navegadores que la admiten */
+  -ms-overflow-style: none; /* Oculta la barra de desplazamiento en Internet Explorer y Edge */
+}
+
+ion-segment::-webkit-scrollbar {
+  width: 0; /* Oculta la barra de desplazamiento en navegadores basados en WebKit */
+}
+
+ion-fab {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s;
+}
+
+ion-fab.show-floating-button {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 0.3s;
+}

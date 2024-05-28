@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar"
+    [ngClass]="{'light-mode': !themeService.isDarkMode(), 'dark-mode': themeService.isDarkMode()}">
+    <ion-buttons slot="start">
+      <img *ngIf="themeService.isDarkMode()" [src]="imagenOscuro" class="imgHeader" alt="Imagen Modo Oscuro" />
+      <img *ngIf="!themeService.isDarkMode()" [src]="imagenClaro" class="imgHeader" alt="Imagen Modo Claro" />
+    </ion-buttons>
+    <ion-title text-center class="titleHeader">Talleres</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="marquee">
+    <div class="marquee-content">
+      <ng-container *ngFor="let indicator of indicators">
+        | {{ indicator.nombre }}: {{ indicator.valor }} {{ indicator.unidad }} |
+      </ng-container>
+      <!-- Duplicar los elementos para el efecto infinito -->
+      <ng-container *ngFor="let indicator of indicators">
+        | {{ indicator.nombre }}: {{ indicator.valor }} {{ indicator.unidad }} |
+      </ng-container>
+      <ng-container *ngFor="let indicator of indicators">
+        | {{ indicator.nombre }}: {{ indicator.valor }} {{ indicator.unidad }} |
+      </ng-container>
+    </div>
+  </div>
+  <div class="ion-margin">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>  
+    <ion-card *ngFor="let taller of talleres" class="card ">
+        <ion-img [src]="taller.fields.galeria" class="imgCard" alt="Imagen de la taller"></ion-img>
+      <ion-card-header>
+        <!-- <ion-card-subtitle class="ion-margin-start autor ion-text-center">{{ taller.fields.autor }}</ion-card-subtitle> -->
+        <ion-card-title class="titleCard ion-text-center">{{ taller.fields.titular }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content class="contentCard ion-margin-horizontal">
+        {{ taller.fields.contenido}}
+      </ion-card-content>
+      <p class="fecha ion-margin-horizontal">
+        {{ taller.fields.fecha_publicacion | date:'EEEE d \'de\' MMMM,
+        yyyy' }}
+      </p>
+    </ion-card>
+  </div>
+</ion-content>

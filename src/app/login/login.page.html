@@ -1,0 +1,41 @@
+<ion-content class="bg" [fullscreen]="true">
+  <div class="container centered-container ion-margin-horizontal">
+    <div class="ion-margin-horizontal">
+      <img src="../../assets/image/Logo_IC_Dark.png" class="logo" alt="logo" />
+      <h3 class="boldText ion-margin-vertical">Inicio de Sesión</h3>
+      <form (ngSubmit)="login()">
+        <ion-grid [fixed]="true">
+          <ion-row class="ion-margin-bottom">
+            <ion-col class="flex">
+              <ion-item class="input" lines="none">
+                <ion-icon name="person-outline" class="icon" slot="start"></ion-icon>
+                <ion-label position="floating">Usuario</ion-label>
+                <ion-input type="text" id="user" [(ngModel)]="username" (ionFocus)="onInputFocus($event)"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item class="input" lines="none">
+                <ion-icon name="lock-closed-outline" class="icon" slot="start"></ion-icon>
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input type="{{ showPassword ? 'text' : 'password' }}" id="pass" [(ngModel)]="password"
+                  (ionFocus)="onInputFocus($event)"></ion-input>
+                <ion-icon name="{{ showPassword ? 'eye-off' : 'eye' }}" class="iconEye" slot="end"
+                  (click)="togglePasswordVisibility()"></ion-icon>
+              </ion-item>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <button class="full-width ion-margin-vertical" type="submit">Acceder</button>
+      </form>
+      <a href="#" class="textLight">
+        Si tiene problemas para acceder,<br />
+        pincha <strong>aquí</strong> 
+      </a>
+    </div>
+
+  </div>
+</ion-content>

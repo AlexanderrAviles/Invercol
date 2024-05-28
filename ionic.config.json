@@ -1,0 +1,7 @@
+{
+  "name": "Invercol",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

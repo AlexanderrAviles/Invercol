@@ -1,0 +1,124 @@
+  <ion-header>
+    <ion-toolbar class="custom-toolbar"
+      [ngClass]="{'light-mode': !themeService.isDarkMode(), 'dark-mode': themeService.isDarkMode()}">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="start">
+        <img *ngIf="themeService.isDarkMode()" [src]="imagenOscuro" class="imgHeader" alt="Imagen Modo Oscuro" />
+        <img *ngIf="!themeService.isDarkMode()" [src]="imagenClaro" class="imgHeader" alt="Imagen Modo Claro" />
+      </ion-buttons>
+      <ion-title text-center class="titleHeader">Noticias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Autores</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="filtrarPorAutor('')">
+          <ion-label>
+            Todos
+          </ion-label>
+        </ion-item>
+        <ion-item *ngFor="let autor of autores" (click)="filtrarPorAutor(autor)">
+          <ion-label>
+            {{ autor }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- <ion-menu side="start" menuId="first" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Autores</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item (click)="filtrarPorAutor('')">Todos</ion-item>
+      <ion-item *ngFor="let autor of autores" (click)="filtrarPorAutor(autor)">{{ autor }}</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu> -->
+
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+  <!-- Contenido principal -->
+  <ion-content [fullscreen]="true" id="content" (ionScroll)="onContentScroll($event)">
+    <div class="marquee">
+      <div class="marquee-content">
+        <ng-container *ngFor="let indicator of indicators">
+          | {{ indicator.nombre }}: {{ indicator.valor }} {{ indicator.unidad }} |
+        </ng-container>
+        <!-- Duplicar los elementos para el efecto infinito -->
+        <ng-container *ngFor="let indicator of indicators">
+          | {{ indicator.nombre }}: {{ indicator.valor }} {{ indicator.unidad }} |
+        </ng-container>
+        <ng-container *ngFor="let indicator of indicators">
+          | {{ indicator.nombre }}: {{ indicator.valor }} {{ indicator.unidad }} |
+        </ng-container>
+      </div>
+    </div>
+    <!-- <div class="ion-margin-horizontal">
+    <ion-segment id="ion-segment-reduced" [(ngModel)]="autorSeleccionado" (ionChange)="filtrarPorAutor()"
+      [ngClass]="{ 'modo-oscuro': modoClaro, 'modo-claro': !modoClaro }" scrollable>
+      <ion-segment-button class="custom-segment-button" value="">
+        <span>{{ 'Todas' }}</span>
+      </ion-segment-button>
+      <ion-segment-button *ngFor="let autor of autores" class="custom-segment-button" [value]="autor">
+        <span>{{ autor }}</span>
+      </ion-segment-button>
+    </ion-segment>
+
+  </div> -->
+    <div class="">
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <ion-card *ngFor="let noticia of noticias; let i = index" [routerLink]="['/ver-noticia', noticia.id]">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="7">
+              <ion-card-subtitle class="autor ion-text-center noticia"
+                [ngStyle]="getBackgroundStyle(noticia.fields.autor)">
+                {{ noticia.fields.autor }}
+              </ion-card-subtitle>
+              <ion-card-header class="headerCard">
+                <ion-card-title class="titleCard">{{ noticia.fields.titular }}</ion-card-title>
+              </ion-card-header>
+
+
+              <!-- 
+            <p class="fecha">
+              {{ noticia.fields.fecha_publicacion | date:'EEEE d \'de\' MMMM,
+              yyyy' }}
+            </p> -->
+              <p class="fecha ion-text-start">
+                {{ noticia.fields.fecha_publicacion | date:'EEEE d \'de\' MMMM, yyyy' }}
+              </p>
+            </ion-col>
+            <ion-col class="imgCol" size="5">
+              <ion-thumbnail class="imgCard">
+                <div class="imgWrapper">
+                  <ion-img [src]="noticia.fields.galeria" alt="Imagen de la noticia"></ion-img>
+                </div>
+              </ion-thumbnail>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="showButton">
+      <ion-fab-button color="dark" size="small" (click)="scrollToTop()">
+        <ion-icon name="chevron-up"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+  </ion-content>
